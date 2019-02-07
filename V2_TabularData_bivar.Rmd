@@ -206,6 +206,29 @@ heat1 = base +  geom_tile()
 heat2 = heat1 +scale_fill_gradient(low = "white", 
                                    high = "black")
 heat2
+
+tableFreq[order(-tableFreq$pct),]
+tableFreqO=tableFreq[order(tableFreq$pct),]
+base = ggplot(tableFreq, aes(x=locale,pct)) 
+lolliplot1=base + geom_segment(aes(y = 0, 
+                                   x = locale, 
+                                   yend = pct, 
+                                   xend = locale), color = "grey50") 
+lolliplot1 + geom_point()
+
+tableFreq[order(tableFreq$pct),]
+
+# reordering DF steps:
+tableFreqO=tableFreq[order(tableFreq$pct),]
+
+
+base = ggplot(tableFreqO, aes(locale,pct)) 
+lolliplot1=base + geom_segment(aes(y = 0, 
+                                   x = locale, 
+                                   yend = pct, 
+                                   xend = locale), color = "gray") 
+lolliplot2 = lolliplot1 + geom_point()
+lolliplot2 + scale_x_discrete(limits=tableFreqO$locale) # key element
 ```
 
 Some work on the legend:
@@ -227,6 +250,14 @@ heat4 + labs(y="Crime")
 <span style="color:red"> Exercise 2:<br> Change the heatplot to ascending order, where intensity goes from yellow to purple.
 </span>
 _____
+
+```{r}
+base  = ggplot(df.C, aes(x = Daytime, y = reorder(Crime, -Percent), fill = Percent)) 
+heat1 = base +  geom_tile() 
+heat2 = heat1 +scale_fill_gradient(low = "yellow",high = "purple")
+heat2
+```
+
 
 [Go to table of contents.](#part1)
 
