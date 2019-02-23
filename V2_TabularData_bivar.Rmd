@@ -387,7 +387,6 @@ Years to report seems interesting, you have a decreasing tendency, then we can s
 ```{r yearsToRep, eval=FALSE}
 # no missing:
 crimeYearGG=crimeY2000[complete.cases(crimeY2000$YearsToReport),]
-
 base = ggplot(crimeYearGG,aes(x=factor(year), y=YearsToReport)) 
 box  = base + geom_boxplot()
 box
